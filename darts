@@ -1,0 +1,120 @@
+package Darts;
+
+
+import java.util.Scanner;
+
+
+public class Darts{
+
+
+    static int score(int x, int y) {
+
+        int score = 0;
+
+// Remote negative from the coordinates
+
+        x = Math.abs(x);
+
+        y = Math.abs(y);
+
+// find the distance(radius) for the coordinates given.
+
+        int r = (int) (Math.sqrt((x*x) + (y*y)));
+
+        System.out.println("My radius: "+r);
+
+        double pi = 3.14, area;
+
+// Calculate the area equivalence
+
+        area = pi*r*r;
+
+// Calculate area of inner circle
+
+        double innerArea = pi*1*1;
+
+// Calculate area of outer circle
+
+        double outerArea = pi*5*5;
+
+// Calculate area of outermost circle
+
+        double outerMostArea = pi*10*10;
+
+// Check if area within the 1st dart circle return 10
+
+        if (area <= innerArea) {
+
+            System.out.println("Inner Area: "+innerArea);
+
+            System.out.println("Score Area: "+area);
+
+            score = 10;
+
+        }
+
+// Check if area within the 2nd dart circle return 5
+
+        else if (area <= outerArea) {
+
+            System.out.println("Outer Area: "+outerArea);
+
+            System.out.println("Score Area: "+area);
+
+            score = 5;
+
+        }
+
+// Check if area within the 3rd dart circle return 1
+
+        else if (area <= outerMostArea) {
+
+            System.out.println("Outer most Area: "+outerMostArea);
+
+            System.out.println("Score Area: "+area);
+
+            score = 1;
+
+        }
+
+// Check if area outside the target thus return 0
+
+        else {
+
+            System.out.print("Score Area: "+area);
+
+            score = 0;
+
+        }
+
+
+        return score;
+
+    }
+
+
+    public static void main(String[] args) {
+
+        int x, y;
+
+
+        Scanner s = new Scanner(System.in);
+
+        System.out.print("Enter value of x-axis: ");
+
+        x = s.nextInt();
+
+        System.out.print("Enter value of y-axis: ");
+
+        y = s.nextInt();
+
+
+        int result = score(x, y);
+
+        System.out.println("Score: ("+x + "," +y+") " + result);
+
+
+    }
+
+
+}
